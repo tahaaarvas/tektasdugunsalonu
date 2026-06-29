@@ -46,7 +46,6 @@
             -moz-osx-font-smoothing: grayscale;
         }
 
-        /* Scrollbar */
         ::-webkit-scrollbar {
             width: 6px;
         }
@@ -58,7 +57,6 @@
             border-radius: 3px;
         }
 
-        /* ========== NAVBAR ========== */
         .navbar {
             position: fixed;
             top: 0;
@@ -173,7 +171,6 @@
             color: var(--black);
         }
 
-        /* Mobile menu */
         .hamburger {
             display: none;
             flex-direction: column;
@@ -234,7 +231,7 @@
             }
         }
 
-        /* ========== HERO ========== */
+        /* Hero arka planı eski haline döndürüldü */
         .hero {
             position: relative;
             height: 100vh;
@@ -367,8 +364,7 @@
         }
 
         @keyframes floatDown {
-            0%,
-            100% {
+            0%, 100% {
                 transform: translateX(-50%) translateY(0);
             }
             50% {
@@ -389,7 +385,6 @@
             }
         }
 
-        /* ========== SECTION STYLES ========== */
         .section {
             padding: 6rem 2rem;
         }
@@ -447,7 +442,6 @@
             background: var(--black);
         }
 
-        /* ========== ABOUT ========== */
         #hakkimizda {
             background: var(--black-soft);
         }
@@ -526,7 +520,6 @@
             }
         }
 
-        /* ========== HİZMETLER ========== */
         #hizmetler {
             background: var(--black);
         }
@@ -582,7 +575,6 @@
             line-height: 1.7;
         }
 
-        /* ========== GALERİ ========== */
         #galeri {
             background: var(--black-soft);
         }
@@ -653,7 +645,6 @@
             }
         }
 
-        /* ========== İLETİŞİM ========== */
         #iletisim {
             background: var(--black);
         }
@@ -760,17 +751,6 @@
             border: none;
             filter: grayscale(30%) brightness(0.8);
         }
-        .map-placeholder {
-            width: 100%;
-            height: 100%;
-            background: var(--black-medium);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            letter-spacing: 2px;
-        }
 
         @media (max-width: 800px) {
             .contact-grid {
@@ -782,7 +762,6 @@
             }
         }
 
-        /* ========== FOOTER ========== */
         .footer {
             background: var(--black-soft);
             border-top: 1px solid var(--border-subtle);
@@ -814,7 +793,6 @@
             margin: 0 8px;
         }
 
-        /* Lightbox */
         .lightbox {
             position: fixed;
             inset: 0;
@@ -857,7 +835,6 @@
 </head>
 <body>
 
-    <!-- NAVBAR -->
     <nav class="navbar" id="navbar">
         <div class="navbar-inner">
             <a href="#anasayfa" class="nav-logo">
@@ -879,7 +856,6 @@
         </div>
     </nav>
 
-    <!-- HERO -->
     <section class="hero" id="anasayfa">
         <div class="hero-content">
             <span class="hero-badge">Van'ın En Seçkin Mekânı</span>
@@ -896,7 +872,6 @@
         </div>
     </section>
 
-    <!-- HAKKIMIZDA -->
     <section class="section section-dark" id="hakkimizda">
         <div class="container">
             <div class="section-header">
@@ -906,7 +881,7 @@
             </div>
             <div class="about-grid">
                 <div class="about-image">
-                    <img src="https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=800&q=80" alt="Tektaş Düğün Salonu iç mekan" loading="lazy">
+                    <img src="dugunsalonuiçi.png" alt="Tektaş Düğün Salonu iç mekan" loading="lazy">
                 </div>
                 <div class="about-text">
                     <h3>Van'da Lüksün ve Zarafetin Buluştuğu Adres</h3>
@@ -917,10 +892,10 @@
                     </p>
                     <p>
                         Misafirlerinizin kendini özel hissedeceği, ışıklandırmadan dekorasyona her detayın titizlikle
-                        düşünüldüğü salonumuz, 500 kişiye kadar kapasitesiyle büyük davetler için idealdir.
+                        düşünüldüğü salonumuz, 1000 kişiye kadar kapasitesiyle büyük davetler için idealdir.
                     </p>
                     <div class="about-highlights">
-                        <div class="highlight-item"><i class="fas fa-check-circle"></i><span>500 Kişi Kapasite</span></div>
+                        <div class="highlight-item"><i class="fas fa-check-circle"></i><span>1000 Kişi Kapasite</span></div>
                         <div class="highlight-item"><i class="fas fa-check-circle"></i><span>Ücretsiz Otopark</span></div>
                         <div class="highlight-item"><i class="fas fa-check-circle"></i><span>Modern Ses & Işık</span></div>
                         <div class="highlight-item"><i class="fas fa-check-circle"></i><span>İkram Seçenekleri</span></div>
@@ -930,7 +905,6 @@
         </div>
     </section>
 
-    <!-- HİZMETLER -->
     <section class="section section-black" id="hizmetler">
         <div class="container">
             <div class="section-header">
@@ -973,7 +947,6 @@
         </div>
     </section>
 
-    <!-- GALERİ -->
     <section class="section section-dark" id="galeri">
         <div class="container">
             <div class="section-header">
@@ -983,34 +956,33 @@
             </div>
             <div class="gallery-grid">
                 <div class="gallery-item large">
-                    <img src="asstess/IMG_6047.png" alt="Düğün salonu genel görünüm" loading="lazy">
+                    <img src="dugunsalonu2.png" alt="Düğün salonu genel görünüm" loading="lazy">
+                    <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+                </div>
+                <div class="gallery-item"> 
+                    <img src="dugunsalonu3.png" loading="lazy">
                     <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
                 </div>
                 <div class="gallery-item">
-                    <img src="asstess/IMG_6044.png" alt="Masa dekorasyonu" loading="lazy">
+                    <img src="masalar.png" alt="Sahne ve ışıklandırma" loading="lazy">
                     <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
                 </div>
                 <div class="gallery-item">
-                    <img src="asstess/IMG_6046.png" alt="Sahne ve ışıklandırma" loading="lazy">
+                    <img src="dugunsalonuarkakapı.png" alt="Kına gecesi dekoru" loading="lazy">
                     <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
                 </div>
                 <div class="gallery-item">
-                    <img src="asstess/IMG_6036.png" alt="Kına gecesi dekoru" loading="lazy">
+                    <img src="masalar2.png" alt="Çiçek aranjmanları" loading="lazy">
                     <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
                 </div>
                 <div class="gallery-item">
-                    <img src="asstess/IMG_6048.png" alt="Çiçek aranjmanları" loading="lazy">
-                    <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
-                </div>
-                <div class="gallery-item">
-                    <img src="asstess/IMG_6037.png" alt="Doğum günü partisi" loading="lazy">
+                    <img src="sahne.png" alt="Doğum günü partisi" loading="lazy">
                     <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- İLETİŞİM -->
     <section class="section section-black" id="iletisim">
         <div class="container">
             <div class="section-header">
@@ -1043,7 +1015,7 @@
                         <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
                         <div class="info-detail">
                             <h5>Adres</h5>
-                            <p>Abdurrahman Gazi, Erciş Yolu No:103<br>65040 Van Merkez / Van</p>
+                            <p>Özalp Yolu üzeri, Sıhke TOKİ Karşısı<br>Van Merkez / Van</p>
                         </div>
                     </div>
                     <div class="info-item">
@@ -1063,9 +1035,9 @@
                     </div>
                 </div>
                 <div class="map-container">
-                    <!-- Güncel Google Haritalar konumu: Abdurrahman Gazi, Erciş Yolu No:103 -->
+                    <!-- Güncel konum: Özalp Yolu üzeri, Sıhke TOKİ Karşısı -->
                     <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3140.9542!2d43.3548!3d38.5061!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40127ab9bbe302c1%3A0x71a140a819674e1e!2sAbdurrahman%20Gazi%2C%20Erci%C5%9F%20Yolu%20No%3A103%2C%2065040%20Van%20Merkez%2FVan!5e0!3m2!1str!2str!4v1717000000000"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3140.9542!2d43.412!3d38.538667!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzjCsDMyJzE5LjIiTiA0M8KwMjQnNDMuMiJF!5e0!3m2!1str!2str!4v1717000000000"
                         allowfullscreen=""
                         loading="lazy"
                         referrerpolicy="no-referrer-when-downgrade"
@@ -1076,7 +1048,6 @@
         </div>
     </section>
 
-    <!-- FOOTER -->
     <footer class="footer">
         <div class="social-icons">
             <a href="https://instagram.com/tektasdugunsalonu" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
@@ -1086,14 +1057,12 @@
         <p>&copy; 2026 Tektaş Düğün Salonu<span class="gold-dot">◆</span>Tüm hakları saklıdır.</p>
     </footer>
 
-    <!-- LIGHTBOX -->
     <div class="lightbox" id="lightbox">
         <button class="lightbox-close" id="lightboxClose">&times;</button>
         <img src="" alt="" id="lightboxImg">
     </div>
 
     <script>
-        // Navbar scroll effect
         const navbar = document.getElementById('navbar');
         window.addEventListener('scroll', () => {
             if (window.scrollY > 50) {
@@ -1103,7 +1072,6 @@
             }
         });
 
-        // Mobile menu toggle
         const hamburger = document.getElementById('hamburger');
         const navLinks = document.getElementById('navLinks');
 
@@ -1117,14 +1085,12 @@
             navLinks.classList.remove('active');
         }
 
-        // Close menu on outside click
         document.addEventListener('click', (e) => {
             if (!hamburger.contains(e.target) && !navLinks.contains(e.target)) {
                 closeMenu();
             }
         });
 
-        // Lightbox functionality
         const lightbox = document.getElementById('lightbox');
         const lightboxImg = document.getElementById('lightboxImg');
         const lightboxClose = document.getElementById('lightboxClose');
