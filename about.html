@@ -1,0 +1,1162 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tektaş Düğün Salonu | Van</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Montserrat:wght@300;400;500;600&family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --gold: #c9a962;
+            --gold-light: #d4b76e;
+            --gold-dark: #a8883f;
+            --black: #0a0a0a;
+            --black-soft: #111111;
+            --black-medium: #1a1a1a;
+            --cream: #f5f0e8;
+            --white: #ffffff;
+            --text-light: #e0dcd5;
+            --text-muted: #b8b3a8;
+            --overlay: rgba(0, 0, 0, 0.55);
+            --overlay-strong: rgba(0, 0, 0, 0.75);
+            --border-subtle: rgba(201, 169, 98, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 90px;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--black);
+            color: var(--text-light);
+            line-height: 1.7;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--black-medium);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--gold-dark);
+            border-radius: 3px;
+        }
+
+        /* ========== NAVBAR ========== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(10, 10, 10, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-subtle);
+            transition: all 0.4s ease;
+            padding: 0 2rem;
+        }
+
+        .navbar.scrolled {
+            background: rgba(10, 10, 10, 0.95);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.6);
+        }
+
+        .navbar-inner {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 80px;
+        }
+
+        .nav-logo {
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-logo .logo-icon {
+            font-size: 2rem;
+            color: var(--gold);
+        }
+        .nav-logo .logo-text {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--white);
+            letter-spacing: 2px;
+            line-height: 1.1;
+        }
+        .nav-logo .logo-text span {
+            display: block;
+            font-size: 0.65rem;
+            font-weight: 400;
+            letter-spacing: 5px;
+            color: var(--gold);
+            text-transform: uppercase;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-light);
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+            position: relative;
+            padding: 5px 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--gold);
+            transition: width 0.35s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            background: transparent;
+            border: 1.5px solid var(--gold);
+            color: var(--gold);
+            padding: 10px 22px;
+            border-radius: 0;
+            font-size: 0.8rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+            text-decoration: none;
+        }
+        .nav-cta:hover {
+            background: var(--gold);
+            color: var(--black);
+        }
+
+        /* Mobile menu */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            cursor: pointer;
+            z-index: 1001;
+            background: none;
+            border: none;
+            padding: 5px;
+        }
+        .hamburger span {
+            width: 28px;
+            height: 2px;
+            background: var(--gold);
+            transition: 0.3s ease;
+            display: block;
+        }
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 6px);
+        }
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -6px);
+        }
+
+        @media (max-width: 900px) {
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 75%;
+                max-width: 350px;
+                height: 100vh;
+                background: rgba(10, 10, 10, 0.98);
+                backdrop-filter: blur(30px);
+                flex-direction: column;
+                justify-content: center;
+                gap: 2rem;
+                transition: right 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+                border-left: 1px solid var(--border-subtle);
+                z-index: 999;
+            }
+            .nav-links.active {
+                right: 0;
+            }
+            .hamburger {
+                display: flex;
+            }
+            .nav-cta.desktop-only {
+                display: none;
+            }
+        }
+        @media (min-width: 901px) {
+            .nav-cta.mobile-only {
+                display: none;
+            }
+        }
+
+        /* ========== HERO ========== */
+        .hero {
+            position: relative;
+            height: 100vh;
+            min-height: 650px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: url('https://images.unsplash.com/photo-1519741497674-611481863552?w=1600&q=80') center/cover no-repeat;
+            background-attachment: fixed;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg,
+                    rgba(0, 0, 0, 0.65) 0%,
+                    rgba(0, 0, 0, 0.5) 40%,
+                    rgba(0, 0, 0, 0.75) 100%);
+            z-index: 1;
+        }
+
+        .hero .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 2rem;
+            max-width: 800px;
+        }
+
+        .hero .hero-badge {
+            display: inline-block;
+            border: 1px solid var(--gold);
+            padding: 8px 25px;
+            font-size: 0.75rem;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 2rem;
+            font-weight: 500;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.8rem, 6vw, 5rem);
+            font-weight: 700;
+            color: var(--white);
+            line-height: 1.15;
+            margin-bottom: 1.2rem;
+            letter-spacing: 1px;
+        }
+        .hero h1 em {
+            font-style: italic;
+            color: var(--gold);
+            font-weight: 500;
+        }
+
+        .hero .hero-subtitle {
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            letter-spacing: 3px;
+            font-weight: 300;
+            margin-bottom: 2.5rem;
+            text-transform: uppercase;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 32px;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            text-decoration: none;
+            font-family: 'Montserrat', sans-serif;
+            border: 1.5px solid transparent;
+        }
+
+        .btn-gold {
+            background: var(--gold);
+            color: var(--black);
+            border-color: var(--gold);
+        }
+        .btn-gold:hover {
+            background: transparent;
+            color: var(--gold);
+            border-color: var(--gold);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--white);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+        .btn-outline:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 35px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-muted);
+            font-size: 0.7rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            animation: floatDown 2s ease-in-out infinite;
+        }
+        .scroll-indicator i {
+            font-size: 1rem;
+        }
+
+        @keyframes floatDown {
+            0%,
+            100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            50% {
+                transform: translateX(-50%) translateY(12px);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .hero {
+                background-attachment: scroll;
+                min-height: 550px;
+                height: 90vh;
+            }
+            .btn {
+                padding: 12px 24px;
+                font-size: 0.75rem;
+                letter-spacing: 1.5px;
+            }
+        }
+
+        /* ========== SECTION STYLES ========== */
+        .section {
+            padding: 6rem 2rem;
+        }
+        .section-dark {
+            background: var(--black-soft);
+        }
+        .section-black {
+            background: var(--black);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        .section-header .section-tag {
+            font-size: 0.7rem;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+        .section-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 0.8rem;
+            letter-spacing: 1px;
+        }
+        .section-header .divider {
+            width: 70px;
+            height: 2px;
+            background: var(--gold);
+            margin: 0 auto;
+            position: relative;
+        }
+        .section-header .divider::after {
+            content: '◆';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: var(--black-soft);
+            color: var(--gold);
+            font-size: 0.6rem;
+            padding: 0 12px;
+        }
+        .section-black .section-header .divider::after {
+            background: var(--black);
+        }
+
+        /* ========== ABOUT ========== */
+        #hakkimizda {
+            background: var(--black-soft);
+        }
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        .about-image {
+            position: relative;
+            overflow: hidden;
+            border: 1px solid var(--border-subtle);
+        }
+        .about-image img {
+            width: 100%;
+            height: 450px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.6s ease;
+        }
+        .about-image:hover img {
+            transform: scale(1.04);
+        }
+        .about-image::after {
+            content: '';
+            position: absolute;
+            inset: 15px;
+            border: 1px solid var(--gold);
+            opacity: 0.5;
+            pointer-events: none;
+            z-index: 2;
+        }
+        .about-text h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--white);
+            margin-bottom: 1.2rem;
+            font-weight: 600;
+        }
+        .about-text p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.9;
+            margin-bottom: 1.5rem;
+        }
+        .about-highlights {
+            display: flex;
+            gap: 2rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+        .highlight-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .highlight-item i {
+            color: var(--gold);
+            font-size: 1.3rem;
+        }
+        .highlight-item span {
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--text-light);
+        }
+
+        @media (max-width: 800px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+            .about-image img {
+                height: 300px;
+            }
+        }
+
+        /* ========== HİZMETLER ========== */
+        #hizmetler {
+            background: var(--black);
+        }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        .service-card {
+            background: var(--black-medium);
+            border: 1px solid var(--border-subtle);
+            padding: 2.5rem 2rem;
+            text-align: center;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--gold);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.5s ease;
+        }
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+        .service-card:hover {
+            border-color: var(--gold);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+        }
+        .service-icon {
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin-bottom: 1.2rem;
+        }
+        .service-card h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            color: var(--white);
+            margin-bottom: 0.6rem;
+            font-weight: 600;
+        }
+        .service-card p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
+
+        /* ========== GALERİ ========== */
+        #galeri {
+            background: var(--black-soft);
+        }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-auto-rows: 250px;
+            gap: 0.8rem;
+        }
+        .gallery-item {
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            border: 1px solid transparent;
+            transition: border-color 0.4s ease;
+        }
+        .gallery-item:hover {
+            border-color: var(--gold);
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+            display: block;
+        }
+        .gallery-item:hover img {
+            transform: scale(1.08);
+        }
+        .gallery-item.large {
+            grid-column: span 2;
+            grid-row: span 2;
+        }
+        .gallery-item .gallery-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: 2;
+        }
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+        .gallery-overlay i {
+            color: var(--gold);
+            font-size: 2rem;
+        }
+
+        @media (max-width: 900px) {
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+                grid-auto-rows: 180px;
+            }
+            .gallery-item.large {
+                grid-column: span 1;
+                grid-row: span 1;
+            }
+        }
+        @media (max-width: 500px) {
+            .gallery-grid {
+                grid-template-columns: 1fr 1fr;
+                grid-auto-rows: 140px;
+                gap: 0.4rem;
+            }
+        }
+
+        /* ========== İLETİŞİM ========== */
+        #iletisim {
+            background: var(--black);
+        }
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+        .contact-info h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--white);
+            margin-bottom: 1.5rem;
+        }
+        .contact-info .info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 1.8rem;
+        }
+        .info-item .info-icon {
+            width: 45px;
+            height: 45px;
+            background: var(--black-medium);
+            border: 1px solid var(--border-subtle);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            color: var(--gold);
+            font-size: 1.1rem;
+        }
+        .info-item .info-detail h5 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 4px;
+        }
+        .info-item .info-detail p,
+        .info-item .info-detail a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+        .info-item .info-detail a:hover {
+            color: var(--gold);
+        }
+
+        .contact-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        .contact-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 16px 28px;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.4s ease;
+            border: 1.5px solid;
+            font-family: 'Montserrat', sans-serif;
+            width: fit-content;
+        }
+        .contact-btn.whatsapp {
+            background: #25D366;
+            color: #fff;
+            border-color: #25D366;
+        }
+        .contact-btn.whatsapp:hover {
+            background: transparent;
+            color: #25D366;
+        }
+        .contact-btn.phone {
+            background: transparent;
+            color: var(--gold);
+            border-color: var(--gold);
+        }
+        .contact-btn.phone:hover {
+            background: var(--gold);
+            color: var(--black);
+        }
+
+        .map-container {
+            width: 100%;
+            height: 350px;
+            border: 1px solid var(--border-subtle);
+            overflow: hidden;
+            position: relative;
+        }
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            filter: grayscale(30%) brightness(0.8);
+        }
+        .map-placeholder {
+            width: 100%;
+            height: 100%;
+            background: var(--black-medium);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+        }
+
+        @media (max-width: 800px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+            .map-container {
+                height: 280px;
+            }
+        }
+
+        /* ========== FOOTER ========== */
+        .footer {
+            background: var(--black-soft);
+            border-top: 1px solid var(--border-subtle);
+            padding: 2.5rem 2rem;
+            text-align: center;
+        }
+        .footer .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .social-icons a {
+            color: var(--text-muted);
+            font-size: 1.2rem;
+            transition: color 0.3s ease;
+            text-decoration: none;
+        }
+        .social-icons a:hover {
+            color: var(--gold);
+        }
+        .footer p {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+        }
+        .footer .gold-dot {
+            color: var(--gold);
+            margin: 0 8px;
+        }
+
+        /* Lightbox */
+        .lightbox {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.92);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+        }
+        .lightbox.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+        .lightbox img {
+            max-width: 90vw;
+            max-height: 85vh;
+            object-fit: contain;
+            border: 1px solid var(--gold);
+            box-shadow: 0 0 60px rgba(201, 169, 98, 0.15);
+        }
+        .lightbox-close {
+            position: absolute;
+            top: 25px;
+            right: 30px;
+            background: none;
+            border: none;
+            color: var(--gold);
+            font-size: 2rem;
+            cursor: pointer;
+            z-index: 10;
+            transition: color 0.3s;
+        }
+        .lightbox-close:hover {
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar" id="navbar">
+        <div class="navbar-inner">
+            <a href="#anasayfa" class="nav-logo">
+                <i class="fas fa-gem logo-icon"></i>
+                <span class="logo-text">Tektaş<span>Düğün Salonu</span></span>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#anasayfa" onclick="closeMenu()">Anasayfa</a></li>
+                <li><a href="#hakkimizda" onclick="closeMenu()">Hakkımızda</a></li>
+                <li><a href="#hizmetler" onclick="closeMenu()">Hizmetler</a></li>
+                <li><a href="#galeri" onclick="closeMenu()">Galeri</a></li>
+                <li><a href="#iletisim" onclick="closeMenu()">İletişim</a></li>
+                <li><a href="#iletisim" class="nav-cta mobile-only" onclick="closeMenu()">Rezervasyon</a></li>
+            </ul>
+            <a href="#iletisim" class="nav-cta desktop-only">Rezervasyon</a>
+            <button class="hamburger" id="hamburger" aria-label="Menü">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero" id="anasayfa">
+        <div class="hero-content">
+            <span class="hero-badge">Van'ın En Seçkin Mekânı</span>
+            <h1>Hayalinizdeki <em>Davet</em><br>Burada Başlıyor</h1>
+            <p class="hero-subtitle">Zarafet • Konfor • Unutulmaz Anılar</p>
+            <div class="hero-buttons">
+                <a href="#iletisim" class="btn btn-gold"><i class="fas fa-calendar-check"></i> Hemen Rezervasyon</a>
+                <a href="#galeri" class="btn btn-outline"><i class="fas fa-images"></i> Galeriye Göz At</a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <span>Keşfet</span>
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- HAKKIMIZDA -->
+    <section class="section section-dark" id="hakkimizda">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-tag">Hakkımızda</p>
+                <h2>Tektaş Düğün Salonu</h2>
+                <div class="divider"></div>
+            </div>
+            <div class="about-grid">
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=800&q=80" alt="Tektaş Düğün Salonu iç mekan" loading="lazy">
+                </div>
+                <div class="about-text">
+                    <h3>Van'da Lüksün ve Zarafetin Buluştuğu Adres</h3>
+                    <p>
+                        Tektaş Düğün Salonu, yılların verdiği deneyimle Van'da düğün, nişan, kına ve özel davetler için
+                        eşsiz bir atmosfer sunmaktadır. Modern tasarımı, geniş ferah alanları ve kusursuz hizmet anlayışıyla
+                        her türlü organizasyonunuzu unutulmaz kılmak için buradayız.
+                    </p>
+                    <p>
+                        Misafirlerinizin kendini özel hissedeceği, ışıklandırmadan dekorasyona her detayın titizlikle
+                        düşünüldüğü salonumuz, 500 kişiye kadar kapasitesiyle büyük davetler için idealdir.
+                    </p>
+                    <div class="about-highlights">
+                        <div class="highlight-item"><i class="fas fa-check-circle"></i><span>500 Kişi Kapasite</span></div>
+                        <div class="highlight-item"><i class="fas fa-check-circle"></i><span>Ücretsiz Otopark</span></div>
+                        <div class="highlight-item"><i class="fas fa-check-circle"></i><span>Modern Ses & Işık</span></div>
+                        <div class="highlight-item"><i class="fas fa-check-circle"></i><span>İkram Seçenekleri</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HİZMETLER -->
+    <section class="section section-black" id="hizmetler">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-tag">Organizasyonlar</p>
+                <h2>Hizmetlerimiz</h2>
+                <div class="divider"></div>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-heart"></i></div>
+                    <h4>Düğün</h4>
+                    <p>En özel gününüz için kusursuz bir atmosfer. Profesyonel ekip, şık dekorasyon ve unutulmaz bir gece.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-ring"></i></div>
+                    <h4>Nişan</h4>
+                    <p>Yeni bir başlangıcın ilk adımı. Samimi ve zarif bir ortamda nişan töreninizi taçlandırın.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-moon"></i></div>
+                    <h4>Kına Gecesi</h4>
+                    <p>Geleneksel kına gecesi için otantik dokunuşlarla süslenmiş özel bir ambiyans sunuyoruz.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-child"></i></div>
+                    <h4>Sünnet</h4>
+                    <p>Çocuğunuzun bu anlamlı gününde neşe dolu, rengârenk ve güvenli bir kutlama ortamı.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-birthday-cake"></i></div>
+                    <h4>Doğum Günü</h4>
+                    <p>Her yaşa özel konseptlerle doğum günü partileriniz için yaratıcı ve eğlenceli organizasyonlar.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-briefcase"></i></div>
+                    <h4>Kurumsal Etkinlikler</h4>
+                    <p>Seminer, toplantı, gala yemeği ve ödül törenleri için profesyonel altyapı ve şık sunum.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALERİ -->
+    <section class="section section-dark" id="galeri">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-tag">Galeri</p>
+                <h2>Mekândan Kareler</h2>
+                <div class="divider"></div>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item large">
+                    <img src="asstess/IMG_6047.png" alt="Düğün salonu genel görünüm" loading="lazy">
+                    <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="asstess/IMG_6044.png" alt="Masa dekorasyonu" loading="lazy">
+                    <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="asstess/IMG_6046.png" alt="Sahne ve ışıklandırma" loading="lazy">
+                    <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="asstess/IMG_6036.png" alt="Kına gecesi dekoru" loading="lazy">
+                    <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="asstess/IMG_6048.png" alt="Çiçek aranjmanları" loading="lazy">
+                    <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="asstess/IMG_6037.png" alt="Doğum günü partisi" loading="lazy">
+                    <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- İLETİŞİM -->
+    <section class="section section-black" id="iletisim">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-tag">İletişim</p>
+                <h2>Bize Ulaşın</h2>
+                <div class="divider"></div>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>Rezervasyon & Bilgi</h3>
+                    <p style="color:var(--text-muted);margin-bottom:2rem;font-size:0.9rem;">
+                        Özel gününüz için hemen iletişime geçin, size en uygun tarihi birlikte planlayalım.
+                        Telefon veya WhatsApp üzerinden bize 7/24 ulaşabilirsiniz.
+                    </p>
+                    <div class="info-item">
+                        <div class="info-icon"><i class="fas fa-phone-alt"></i></div>
+                        <div class="info-detail">
+                            <h5>Telefon</h5>
+                            <a href="tel:+905016536549">0 501 653 65 49</a>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon"><i class="fab fa-whatsapp"></i></div>
+                        <div class="info-detail">
+                            <h5>WhatsApp</h5>
+                            <a href="https://wa.me/905016536549" target="_blank" rel="noopener">0 501 653 65 49</a>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
+                        <div class="info-detail">
+                            <h5>Adres</h5>
+                            <p>Abdurrahman Gazi, Erciş Yolu No:103<br>65040 Van Merkez / Van</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon"><i class="fas fa-clock"></i></div>
+                        <div class="info-detail">
+                            <h5>Çalışma Saatleri</h5>
+                            <p>Pazartesi - Pazar: 09:00 - 23:00</p>
+                        </div>
+                    </div>
+                    <div class="contact-buttons">
+                        <a href="https://wa.me/905016536549" target="_blank" rel="noopener" class="contact-btn whatsapp">
+                            <i class="fab fa-whatsapp"></i> WhatsApp'tan Yazın
+                        </a>
+                        <a href="tel:+905016536549" class="contact-btn phone">
+                            <i class="fas fa-phone-alt"></i> Hemen Arayın
+                        </a>
+                    </div>
+                </div>
+                <div class="map-container">
+                    <!-- Güncel Google Haritalar konumu: Abdurrahman Gazi, Erciş Yolu No:103 -->
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3140.9542!2d43.3548!3d38.5061!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40127ab9bbe302c1%3A0x71a140a819674e1e!2sAbdurrahman%20Gazi%2C%20Erci%C5%9F%20Yolu%20No%3A103%2C%2065040%20Van%20Merkez%2FVan!5e0!3m2!1str!2str!4v1717000000000"
+                        allowfullscreen=""
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"
+                        title="Tektaş Düğün Salonu Konum">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="social-icons">
+            <a href="https://instagram.com/tektasdugunsalonu" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://facebook.com/tektasdugunsalonu" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://wa.me/905016536549" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        </div>
+        <p>&copy; 2026 Tektaş Düğün Salonu<span class="gold-dot">◆</span>Tüm hakları saklıdır.</p>
+    </footer>
+
+    <!-- LIGHTBOX -->
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" id="lightboxClose">&times;</button>
+        <img src="" alt="" id="lightboxImg">
+    </div>
+
+    <script>
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile menu toggle
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        function closeMenu() {
+            hamburger.classList.remove('active');
+            navLinks.classList.remove('active');
+        }
+
+        // Close menu on outside click
+        document.addEventListener('click', (e) => {
+            if (!hamburger.contains(e.target) && !navLinks.contains(e.target)) {
+                closeMenu();
+            }
+        });
+
+        // Lightbox functionality
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightboxImg');
+        const lightboxClose = document.getElementById('lightboxClose');
+        const galleryItems = document.querySelectorAll('.gallery-item img');
+
+        galleryItems.forEach(img => {
+            img.addEventListener('click', () => {
+                lightboxImg.src = img.src;
+                lightboxImg.alt = img.alt;
+                lightbox.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        lightboxClose.addEventListener('click', () => {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                lightbox.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+                lightbox.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+    </script>
+</body>
+</html>
